@@ -1,0 +1,64 @@
+@keyframes animate-fab {
+  0% {
+    transform: rotate(5deg);
+  }
+
+  10% {
+    transform: rotate(10deg);
+  }
+
+  20% {
+    transform: rotate(5deg);
+  }
+
+  30% {
+    transform: rotate(0deg);
+  }
+
+  40% {
+    transform: rotate(-5deg);
+  }
+
+  50% {
+    transform: rotate(-10deg);
+  }
+
+  60% {
+    transform: rotate(-15deg);
+  }
+
+  70% {
+    transform: rotate(-10deg);
+  }
+
+  80% {
+    transform: rotate(-5deg);
+  }
+
+  90% {
+    transform: rotate(-2deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.fab {
+  position: absolute;
+  bottom: 80px;
+  right: 80px;
+  width: 90px;
+  height: 90px;
+  background: rgb(233, 227, 188);
+  border: solid var(--dore-clair) 2px;
+  outline: 4px solid var(--dore);
+  border-style: groove;
+  animation: animate-fab 1.5s infinite linear;
+}
+
+.fab:hover {
+  background: white;
+  color: var(--dore-clair);
+  animation: animate-fab 0.5s infinite linear;
+}

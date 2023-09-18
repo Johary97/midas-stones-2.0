@@ -4,7 +4,9 @@
       "@/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
       "@styles/*": ["./src/styles/*"],
-      "@layout/*": ["./src/layout/*"]
+      "@layout/*": ["./src/layout/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@images/*": ["./src/assets/images/*"],
     }
   }
 }
