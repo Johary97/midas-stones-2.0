@@ -5,7 +5,7 @@ import Search from "@components/inputs/search";
 
 export default function DefaultLayout({ children }) {
   return (
-    <>
+    <div className="layout-container">
       <Header></Header>
       <div className="px-4 py-8 mx-auto container">
         <div className="flex flex-row justify-between items-center">
@@ -16,6 +16,6 @@ export default function DefaultLayout({ children }) {
         <div className="py-6">{children}</div>
         <ShoppingCart></ShoppingCart>
       </div>
-    </>
+    </div>
   );
 }

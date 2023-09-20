@@ -5,9 +5,7 @@ export default function Home() {
   return (
     <div>
       <Product
-        href=""
-        name="Lot of Garnet test erer sqdqsd sdfsdfsd"
-        image={saphir}
+        data={{ href: "", name: "Lot of Garnet test erer", image: saphir }}
       ></Product>
     </div>
   );
