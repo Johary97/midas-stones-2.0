@@ -36,14 +36,14 @@ export default function Nav() {
           <Menu
             href="/products/list"
             caption="All Stones"
-            active={currentCategory == "list"}
+            active={currentCategory.value == "list"}
           ></Menu>
           {categoriesValue.map((c) => (
             <Menu
               href={`/categories/${c.url}`}
               key={c.id}
               caption={c.nomCategorie}
-              active={c.url.split("/").slice(-1) == currentCategory}
+              active={c.url.split("/").slice(-1) == currentCategory.value}
             ></Menu>
           ))}
         </div>

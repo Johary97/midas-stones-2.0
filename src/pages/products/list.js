@@ -10,7 +10,7 @@ export default function List() {
   const setCurrentCategory = useSetRecoilState(currentCategoryAtom);
 
   useEffect(() => {
-    setCurrentCategory("list");
+    setCurrentCategory({ caption: "All Stones", value: "list" });
     getAll().then((products) => {
       const p = products.map((product) => {
         return {

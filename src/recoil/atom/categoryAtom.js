@@ -6,7 +6,7 @@ export const categoriesAtom = atom({
 
 export const currentCategoryAtom = atom({
   key: "currentCategoryAtom",
-  default: "list",
+  default: { caption: "list", value: "list" },
 });
 
 export const productByCategoryAtom = atom({

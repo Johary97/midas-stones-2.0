@@ -1,8 +1,9 @@
 import { getCategoryProducts } from "@services/category";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import {
   currentCategoryAtom,
   productByCategoryAtom,
+  categoriesAtom,
 } from "@atoms/categoryAtom";
 import { useEffect } from "react";
 import Product from "@components/cards/product";
@@ -23,15 +24,20 @@ export default function List() {
   const [productByCategory, setProductByCategory] = useRecoilState(
     productByCategoryAtom
   );
+  const categories = useRecoilValue(categoriesAtom);
   const query = useQuery();
   useEffect(() => {
     if (!query) {
       return;
     }
     const strId = query.id;
-    setCurrentCategory(strId);
+    const id = strId.split("-").slice(-1);
+    const category = categories.find((item) => item.id == id);
+    setCurrentCategory({
+      caption: category.nomCategorie,
+      value: strId,
+    });
     if (!productByCategory[strId]) {
-      const id = strId.split("-").slice(-1);
       getCategoryProducts(id).then((products) => {
         console.log(products);
         const p = products.data.data.map((product) => {
@@ -48,7 +54,13 @@ export default function List() {
         setProductByCategory(pc);
       });
     }
-  }, [setCurrentCategory, productByCategory, setProductByCategory, query]);
+  }, [
+    setCurrentCategory,
+    productByCategory,
+    setProductByCategory,
+    query,
+    categories,
+  ]);
 
   return (
     <div className="flex flex-wrap" style={{ gap: "16px" }}>

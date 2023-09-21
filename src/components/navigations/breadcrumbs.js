@@ -4,6 +4,8 @@ import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import { currentCategoryAtom } from "@atoms/categoryAtom";
+import { useRecoilValue } from "recoil";
 
 function handleClick(event) {
   event.preventDefault();
@@ -11,6 +13,7 @@ function handleClick(event) {
 }
 
 export default function Breadcrumb() {
+  const currentCategory = useRecoilValue(currentCategoryAtom);
   const breadcrumbs = [
     <Link
       underline="hover"
@@ -22,7 +25,7 @@ export default function Breadcrumb() {
       Products
     </Link>,
     <Typography key="2" color="#0011ff">
-      All Stones
+      {currentCategory.caption}
     </Typography>,
   ];
 
