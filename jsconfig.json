@@ -8,7 +8,7 @@
       "@assets/*": ["./src/assets/*"],
       "@images/*": ["./src/assets/images/*"],
       "@services/*": ["./src/services/*"],
-      "@stores/*": ["./src/redux/*"],
+      "@atoms/*": ["./src/recoil/atom/*"],
     }
   }
 }

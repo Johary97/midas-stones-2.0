@@ -7,7 +7,7 @@ const nextConfig = {
         source: "/",
 
         // Destination Path ( to )
-        destination: "/products/list",
+        destination: "/categories/list",
         permanent: true,
       },
     ];
