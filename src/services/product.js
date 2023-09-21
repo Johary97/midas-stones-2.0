@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const get_all = async () => {
+const getAll = async () => {
   let all = [];
   let page = 1;
   while (true) {
@@ -21,5 +21,5 @@ const get_all = async () => {
 };
 
 module.exports = {
-  get_all,
+  getAll,
 };

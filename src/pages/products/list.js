@@ -1,14 +1,17 @@
-import { get_all } from "@services/product";
-import { useRecoilState } from "recoil";
+import { getAll } from "@services/product";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { productsAtom } from "@atoms/productAtom";
 import { useEffect } from "react";
 import Product from "@components/cards/product";
+import { currentCategoryAtom } from "@atoms/categoryAtom";
 
 export default function List() {
   const [productsValue, setProductsAtom] = useRecoilState(productsAtom);
+  const setCurrentCategory = useSetRecoilState(currentCategoryAtom);
 
   useEffect(() => {
-    get_all().then((products) => {
+    setCurrentCategory("list");
+    getAll().then((products) => {
       const p = products.map((product) => {
         return {
           ...product,

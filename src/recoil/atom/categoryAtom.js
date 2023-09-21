@@ -6,5 +6,10 @@ export const categoriesAtom = atom({
 
 export const currentCategoryAtom = atom({
   key: "currentCategoryAtom",
-  default: null,
+  default: "list",
+});
+
+export const productByCategoryAtom = atom({
+  key: "productByCategoryAtom",
+  default: {},
 });

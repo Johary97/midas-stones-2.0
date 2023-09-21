@@ -13,3 +13,10 @@
   padding-inline: 12px;
   font-weight: 600;
 }
+
+.active {
+  color: #0011ff;
+  transition: all 0.5s ease;
+  border-right: #0011ff 1px solid;
+  border-left: #0011ff 1px solid;
+}
