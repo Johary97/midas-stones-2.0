@@ -33,7 +33,7 @@ export default function Product(props) {
               <KeyboardDoubleArrowRightIcon />
               <span className={styles.more}>Show more ...</span>
             </Link>
-            <Button
+            {/* <Button
               variant="contained"
               color="primary"
               size="small"
@@ -41,7 +41,7 @@ export default function Product(props) {
               startIcon={<AddShoppingCartIcon />}
             >
               Buy
-            </Button>
+            </Button> */}
           </div>
         </div>
       </Paper>
