@@ -5,7 +5,7 @@ const getAll = async () => {
   let page = 1;
   while (true) {
     let res = await axios.get(
-      `https://api.midas-stones.com/ActuCrud/lists_paging?page=${page}&perPage=2`
+      `https://api.midas-stones.com/ActuCrud/lists_paging?page=${page}&perPage=10`
     );
     if (res && res.data && res.data.data) {
       all = [...all, ...res.data.data];
