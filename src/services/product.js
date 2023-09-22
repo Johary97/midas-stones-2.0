@@ -20,6 +20,14 @@ const getAll = async () => {
   return all;
 };
 
+const getProduct = async (id) => {
+  let res = await axios.get(
+    `https://api.midas-stones.com/ActuCrud/lists_by_product/${id}`
+  );
+  return res;
+};
+
 module.exports = {
   getAll,
+  getProduct,
 };

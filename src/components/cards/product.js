@@ -9,7 +9,7 @@ import Button from "@mui/material/Button";
 export default function Product(props) {
   return (
     <>
-      <Paper component="form" className={styles.card}>
+      <Paper component="div" className={styles.card}>
         <div className={styles.layer1}>
           <Image
             src={`/images/${props.data.photo}`}

@@ -5,6 +5,7 @@ import {
   productByCategoryAtom,
   categoriesAtom,
 } from "@atoms/categoryAtom";
+import { currentProductAtom } from "@atoms/productAtom";
 import { useEffect } from "react";
 import Product from "@components/cards/product";
 import { useRouter } from "next/router";
@@ -21,13 +22,15 @@ function useQuery() {
 
 export default function List() {
   const setCurrentCategory = useSetRecoilState(currentCategoryAtom);
+  const setCurrentProduct = useSetRecoilState(currentProductAtom);
   const [productByCategory, setProductByCategory] = useRecoilState(
     productByCategoryAtom
   );
   const categories = useRecoilValue(categoriesAtom);
+  setCurrentProduct(null);
   const query = useQuery();
   useEffect(() => {
-    if (!query) {
+    if (!query || !categories) {
       return;
     }
     const strId = query.id;
@@ -64,7 +67,8 @@ export default function List() {
 
   return (
     <div className="flex flex-wrap" style={{ gap: "16px" }}>
-      {productByCategory[query.id] &&
+      {query &&
+        productByCategory[query.id] &&
         productByCategory[query.id].map((product) => (
           <Product key={product.id} data={product}></Product>
         ))}

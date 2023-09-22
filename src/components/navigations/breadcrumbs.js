@@ -5,6 +5,7 @@ import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { currentCategoryAtom } from "@atoms/categoryAtom";
+import { currentProductAtom } from "@atoms/productAtom";
 import { useRecoilValue } from "recoil";
 
 function handleClick(event) {
@@ -14,7 +15,8 @@ function handleClick(event) {
 
 export default function Breadcrumb() {
   const currentCategory = useRecoilValue(currentCategoryAtom);
-  const breadcrumbs = [
+  const currentProduct = useRecoilValue(currentProductAtom);
+  let breadcrumbs = [
     <Link
       underline="hover"
       key="1"
@@ -28,6 +30,26 @@ export default function Breadcrumb() {
       {currentCategory.caption}
     </Typography>,
   ];
+
+  if (currentProduct) {
+    breadcrumbs = [
+      <Link
+        underline="hover"
+        key="1"
+        color="#333"
+        href="/material-ui/getting-started/installation/"
+        onClick={handleClick}
+      >
+        Products
+      </Link>,
+      <Typography key="2" color="#333">
+        {currentCategory.caption}
+      </Typography>,
+      <Typography key="3" color="#0011ff">
+        {currentProduct.nomProduit}
+      </Typography>,
+    ];
+  }
 
   return (
     <Stack spacing={2}>
