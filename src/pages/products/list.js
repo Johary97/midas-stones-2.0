@@ -23,7 +23,7 @@ export default function List() {
       });
       setProductsAtom(p);
     });
-  }, [setProductsAtom]);
+  }, [setProductsAtom, setCurrentCategory]);
 
   return (
     <div className="flex flex-wrap" style={{ gap: "16px" }}>

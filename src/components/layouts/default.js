@@ -14,7 +14,7 @@ export default function DefaultLayout({ children }) {
         </div>
 
         <div className="py-6">{children}</div>
-        <ShoppingCart></ShoppingCart>
+        {/* <ShoppingCart></ShoppingCart> */}
       </div>
     </div>
   );
