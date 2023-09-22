@@ -36,6 +36,9 @@ export default function List() {
     const strId = query.id;
     const id = strId.split("-").slice(-1);
     const category = categories.find((item) => item.id == id);
+    if (!categories.length || !category) {
+      return;
+    }
     setCurrentCategory({
       caption: category.nomCategorie,
       value: strId,
