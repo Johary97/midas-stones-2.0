@@ -46,10 +46,9 @@ export default function Detail() {
   return (
     currentProduct && (
       <Box
-        className={`container ${styles.container}`}
-        sx={{ display: "flex", flexDirection: "row" }}
+        className={`container flex max-lg:flex-col lg:flex-row ${styles.container}`}
       >
-        <div className={styles.galery}>
+        <div className={`${styles.galery}`}>
           <Image
             src={`/images/${currentProduct.photo}`}
             layout="fill"
@@ -58,7 +57,7 @@ export default function Detail() {
             className={styles.img}
           ></Image>
         </div>
-        <Paper component="div" className={`mx-3 p-6 ${styles.infos}`}>
+        <Paper component="div" className={`p-6 ${styles.infos}`}>
           <h1 className={styles.title}>{currentProduct.nomProduit}</h1>
           <p className={styles.desc}>{currentProduct.description}</p>
           <ul className={styles.other}>
