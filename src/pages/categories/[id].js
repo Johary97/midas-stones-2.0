@@ -69,7 +69,7 @@ export default function List() {
   ]);
 
   return (
-    <div className="flex flex-wrap" style={{ gap: "16px" }}>
+    <div className="flex flex-wrap justify-around" style={{ gap: "16px" }}>
       {query &&
         productByCategory[query.id] &&
         productByCategory[query.id].map((product) => (

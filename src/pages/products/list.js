@@ -26,7 +26,7 @@ export default function List() {
   }, [setProductsAtom, setCurrentCategory]);
 
   return (
-    <div className="flex flex-wrap" style={{ gap: "16px" }}>
+    <div className="flex flex-wrap justify-around" style={{ gap: "16px" }}>
       {productsValue.map((product) => (
         <Product key={product.id} data={product}></Product>
       ))}

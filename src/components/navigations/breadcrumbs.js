@@ -27,9 +27,25 @@ export default function Breadcrumb() {
       Products
     </Link>,
     <Typography key="2" color="#0011ff">
-      {currentCategory.caption}
+      All Categories
     </Typography>,
   ];
+  if (currentCategory) {
+    breadcrumbs = [
+      <Link
+        underline="hover"
+        key="1"
+        color="#333"
+        href=""
+        onClick={handleClick}
+      >
+        Products
+      </Link>,
+      <Typography key="2" color="#0011ff">
+        {currentCategory.caption}
+      </Typography>,
+    ];
+  }
 
   if (currentProduct) {
     breadcrumbs = [

@@ -34,12 +34,12 @@
   z-index: 2;
   width: 146px;
   height: 146px;
-  padding: 16px;
+  padding: 20px;
   text-align: center;
   border-radius: 50%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
@@ -51,16 +51,8 @@
   color: white;
 }
 
-.layer2:hover .price {
-  display: block;
-}
-
-.layer2:hover .buy {
-  display: flex;
-}
-
-.layer2:hover .link {
-  display: flex;
+.layer2:hover .description {
+  color: white;
 }
 
 .card:hover {
@@ -76,61 +68,13 @@
   text-transform: uppercase;
 }
 
-.head {
-  height: 40px;
-  width: 100%;
-  margin-top: 16px;
-}
-
-.price span {
-  font-size: 16px;
-}
-
-.buy {
-  padding: 4px 8px;
-  border: solid var(--dore-clair) 1px;
-  background-color: var(--dore-sombre);
-  font-size: 14px;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  gap: 4px;
-  border-radius: 6px;
-}
-
-.buy:hover {
-  background-color: var(--dore-clair);
-  border-color: var(--dore-sombre);
-  color: var(--dore-sombre);
-}
-
-.price {
-  font-size: 1.25rem;
-  color: white;
+.description {
+  font-size: 0.6rem;
+  color: #333;
   font-weight: 400;
-  display: none;
-}
-
-.actions {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-}
-
-.link {
-  display: none;
-}
-
-.link * {
-  color: var(--dore-clair);
-  font-size: 0.7rem;
-}
-
-.more {
-  text-decoration: underline;
-  font-size: 0.8rem;
+  overflow: hidden;
+  height: 60px;
+  padding: 4px 8px;
 }
 
 @media (min-width: 768px) {
@@ -142,6 +86,15 @@
   .layer2 {
     width: 226px;
     height: 226px;
+  }
+
+  .description {
+    font-size: 0.8rem;
+    color: #333;
+    font-weight: 400;
+    overflow: hidden;
+    height: 100px;
+    padding: 4px 8px;
   }
 }
 
