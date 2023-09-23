@@ -27,28 +27,30 @@ export default function Nav() {
   }, [categoriesValue, setCategoriesAtom]);
   return (
     <>
-      <div
-        className={`${styles.container} inline-flex items-center justify-center`}
-      >
+      {currentCategory && (
         <div
-          className={`${styles.content} container flex flex-wrap items-center justify-center mt-2`}
+          className={`${styles.container} inline-flex items-center justify-center`}
         >
-          <Menu
-            href="/products/list"
-            caption="All Stones"
-            active={currentCategory.value == "list"}
-          ></Menu>
-          {categoriesValue &&
-            categoriesValue.map((c) => (
-              <Menu
-                href={`/categories/${c.url}`}
-                key={c.id}
-                caption={c.nomCategorie}
-                active={c.url.split("/").slice(-1) == currentCategory.value}
-              ></Menu>
-            ))}
+          <div
+            className={`${styles.content} container flex flex-wrap items-center justify-center mt-2`}
+          >
+            <Menu
+              href="/products/list"
+              caption="All Stones"
+              active={currentCategory.value == "list"}
+            ></Menu>
+            {categoriesValue &&
+              categoriesValue.map((c) => (
+                <Menu
+                  href={`/categories/${c.url}`}
+                  key={c.id}
+                  caption={c.nomCategorie}
+                  active={c.url.split("/").slice(-1) == currentCategory.value}
+                ></Menu>
+              ))}
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

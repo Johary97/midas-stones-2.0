@@ -7,27 +7,39 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { currentCategoryAtom } from "@atoms/categoryAtom";
 import { currentProductAtom } from "@atoms/productAtom";
 import { useRecoilValue } from "recoil";
-
-function handleClick(event) {
-  event.preventDefault();
-  console.info("You clicked a breadcrumb.");
-}
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 
 export default function Breadcrumb() {
   const currentCategory = useRecoilValue(currentCategoryAtom);
   const currentProduct = useRecoilValue(currentProductAtom);
+  const router = useRouter();
+
+  const [width, setWidth] = useState(0);
+
+  function handleWindowSizeChange() {
+    setWidth(window.innerWidth);
+  }
+  useEffect(() => {
+    if (typeof window != "undefined") {
+      setWidth(window.innerWidth);
+      window.addEventListener("resize", handleWindowSizeChange);
+      return () => {
+        window.removeEventListener("resize", handleWindowSizeChange);
+      };
+    }
+  }, []);
+
+  const isMobile = width <= 768;
+
+  function handleClick(event) {
+    event.preventDefault();
+    router.push(event.target.href, null, { shallow: true });
+  }
+
   let breadcrumbs = [
-    <Link
-      underline="hover"
-      key="1"
-      color="#333"
-      href="/material-ui/getting-started/installation/"
-      onClick={handleClick}
-    >
-      Products
-    </Link>,
-    <Typography key="2" color="#0011ff">
-      All Categories
+    <Typography key="1" color="#0011ff">
+      Home
     </Typography>,
   ];
   if (currentCategory) {
@@ -36,10 +48,10 @@ export default function Breadcrumb() {
         underline="hover"
         key="1"
         color="#333"
-        href=""
+        href={isMobile ? "/categories/list" : "/products/list"}
         onClick={handleClick}
       >
-        Products
+        Home
       </Link>,
       <Typography key="2" color="#0011ff">
         {currentCategory.caption}
@@ -47,20 +59,26 @@ export default function Breadcrumb() {
     ];
   }
 
-  if (currentProduct) {
+  if (currentProduct && currentCategory) {
     breadcrumbs = [
       <Link
         underline="hover"
         key="1"
         color="#333"
-        href="/material-ui/getting-started/installation/"
+        href={isMobile ? "/categories/list" : "/products/list"}
         onClick={handleClick}
       >
-        Products
+        Home
       </Link>,
-      <Typography key="2" color="#333">
+      <Link
+        underline="hover"
+        key="2"
+        color="#333"
+        href={currentCategory.url}
+        onClick={handleClick}
+      >
         {currentCategory.caption}
-      </Typography>,
+      </Link>,
       <Typography key="3" color="#0011ff">
         {currentProduct.nomProduit}
       </Typography>,

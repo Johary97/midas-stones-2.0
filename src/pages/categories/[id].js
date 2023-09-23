@@ -9,6 +9,7 @@ import { currentProductAtom } from "@atoms/productAtom";
 import { useEffect } from "react";
 import Product from "@components/cards/product";
 import { useRouter } from "next/router";
+import { currentPageAtom } from "@atoms/pageAtom";
 
 // Resolves query or returns null
 function useQuery() {
@@ -26,6 +27,7 @@ export default function List() {
   const [productByCategory, setProductByCategory] = useRecoilState(
     productByCategoryAtom
   );
+  const setCurrentPage = useSetRecoilState(currentPageAtom);
   const categories = useRecoilValue(categoriesAtom);
   setCurrentProduct(null);
   const query = useQuery();
@@ -41,8 +43,10 @@ export default function List() {
     }
     setCurrentCategory({
       caption: category.nomCategorie,
+      url: "/categories/" + strId,
       value: strId,
     });
+    setCurrentPage({ caption: category.nomCategorie });
     if (!productByCategory[strId]) {
       getCategoryProducts(id).then((products) => {
         console.log(products);
@@ -66,6 +70,7 @@ export default function List() {
     setProductByCategory,
     query,
     categories,
+    setCurrentPage,
   ]);
 
   return (

@@ -74,6 +74,7 @@
   font-weight: 700;
   text-align: center;
   text-transform: uppercase;
+  font-size: 0.8rem;
 }
 
 .head {
@@ -143,6 +144,13 @@
     width: 226px;
     height: 226px;
   }
+  .name {
+    color: var(--black);
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.25rem;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -154,5 +162,12 @@
   .layer2 {
     width: 226px;
     height: 226px;
+  }
+  .name {
+    color: var(--black);
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.35rem;
   }
 }

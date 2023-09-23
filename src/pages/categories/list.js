@@ -4,10 +4,14 @@ import { categoriesAtom } from "@atoms/categoryAtom";
 import { useEffect } from "react";
 import Category from "@components/cards/category";
 import { currentCategoryAtom } from "@atoms/categoryAtom";
+import { currentProductAtom } from "@atoms/productAtom";
+import { currentPageAtom } from "@atoms/pageAtom";
 
 export default function List() {
   const [categoriesValue, setCategoriesAtom] = useRecoilState(categoriesAtom);
   const setCurrentCategory = useSetRecoilState(currentCategoryAtom);
+  const setCurrentProduct = useSetRecoilState(currentProductAtom);
+  const setCurrentPage = useSetRecoilState(currentPageAtom);
   useEffect(() => {
     if (categoriesValue.length == 0) {
       getAll("").then((categories) => {
@@ -23,8 +27,16 @@ export default function List() {
         setCategoriesAtom(c);
       });
     }
-    setCurrentCategory(null);
-  }, [categoriesValue, setCategoriesAtom, setCurrentCategory]);
+    setCurrentCategory({ caption: "All Stones", value: "list" });
+    setCurrentProduct(null);
+    setCurrentPage({ caption: "All Categories Of Stone" });
+  }, [
+    categoriesValue,
+    setCategoriesAtom,
+    setCurrentCategory,
+    setCurrentProduct,
+    setCurrentPage,
+  ]);
 
   return (
     <div className="flex flex-wrap justify-around" style={{ gap: "16px" }}>

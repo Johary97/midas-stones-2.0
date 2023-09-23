@@ -10,7 +10,11 @@ export default function Document() {
   const setProductsAtom = useSetRecoilState(productsAtom);
   const setCurrentCategory = useSetRecoilState(currentCategoryAtom);
   useEffect(() => {
-    setCurrentCategory({ caption: "All Stones", value: "list" });
+    setCurrentCategory({
+      caption: "All Stones",
+      value: "list",
+      url: "/products/list",
+    });
     getAll().then((products) => {
       const p = products.map((product) => {
         return {

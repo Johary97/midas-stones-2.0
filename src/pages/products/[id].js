@@ -1,5 +1,5 @@
 import { getProduct } from "@services/product";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { currentProductAtom, productsAtom } from "@/recoil/atom/productAtom";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
@@ -9,6 +9,7 @@ import Box from "@mui/material/Box";
 import Image from "next/image";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
+import { currentPageAtom } from "@/recoil/atom/pageAtom";
 
 // Resolves query or returns null
 function useQuery() {
@@ -24,6 +25,7 @@ export default function Detail() {
   const [products, setProducts] = useRecoilState(productsAtom);
   const [currentProduct, setCurrentProduct] =
     useRecoilState(currentProductAtom);
+  const setCurrentPage = useSetRecoilState(currentPageAtom);
   const query = useQuery();
   useEffect(() => {
     if (!query || !products) {
@@ -40,8 +42,11 @@ export default function Detail() {
         product = p;
       });
     }
-    setCurrentProduct(product);
-  }, [products, query, setCurrentProduct, setProducts]);
+    if (product) {
+      setCurrentProduct(product);
+      setCurrentPage({ caption: product.nomProduit });
+    }
+  }, [products, query, setCurrentProduct, setProducts, setCurrentPage]);
 
   return (
     currentProduct && (
