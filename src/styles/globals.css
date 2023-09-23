@@ -45,7 +45,7 @@ body {
 }
 
 .layout-container {
-  background-image: url("../assets/images/back.jpg");
+  background-image: url("../assets/images/back.png");
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
